@@ -1,14 +1,19 @@
+// Linked List
+
+// LinkedList constructor
 let LinkedList = () => {
   this.head = null
   this.tail = null
 }
 
+// Node constructor
 let Node = (value, next, prev) => {
   this.value = value
   this.next = next
   this.prev = prev
 }
 
+// insertion is O(1) - constant
 LinkedList.prototype.addToHead = value => {
   let newNode = new Node(value, this.head, null)
   if (this.head) this.head.prev = newNode
@@ -16,6 +21,7 @@ LinkedList.prototype.addToHead = value => {
   this.head = newNode
 }
 
+// removal is O(1) - constant
 LinkedList.prototype.removeHead = () => {
   if (!this.head) return null
   let value = this.head.value
@@ -25,6 +31,7 @@ LinkedList.prototype.removeHead = () => {
   return value
 }
 
+// insertion is O(1) - constant
 LinkedList.prototype.addToTail = value => {
   let newNode = new Node(value, null, this.tail)
   if (this.tail) this.tail.next = newNode
@@ -32,6 +39,7 @@ LinkedList.prototype.addToTail = value => {
   this.tail = newNode
 }
 
+// removal is O(1) - constant
 LinkedList.prototype.removeTail = () => {
   if (!this.tail) return null
   let value = this.tail.value
@@ -41,6 +49,7 @@ LinkedList.prototype.removeTail = () => {
   return value
 }
 
+// traversal and searching is O(n) - linear
 LinkedList.prototype.search = searchValue => {
   let currentNode = this.head
   while (currentNode) {
@@ -52,6 +61,7 @@ LinkedList.prototype.search = searchValue => {
   return null
 }
 
+// finds the indexes of all nodes that have the value passed in
 LinkedList.prototype.indexOf = value => {
   let currentNode = this.head
   let currentIndex = 0
