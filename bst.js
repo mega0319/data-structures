@@ -1,26 +1,31 @@
 // Binary Search Tree
 
 
-// constructor
-function BinarySearchTree(value){
+function BST(value) {
   this.value = value
-  this.left = null
   this.right = null
+  this.left = null
 }
 
-// insertion
-BinarySearchTree.prototype.insert(value){
-  if (value <= this.value){
-    if (!this.left){
-      this.left = new BinarySearchTree(value)
-    }else{
-      this.left.insert(value)
-    }
-  }else if (value > this.value){
-    if (!this.right){
-      this.right = new BinarySearchTree(value)
-    }else{
-      this.right.insert(value)
-    }
+BST.prototype.insert = function(value) {
+  if (value <= this.value) {
+    if (!this.left) this.left = new BST(value)
+    else this.left.insert(value)
+  }
+  else if (value > this.value) {
+    if (!this.right) this.right = new BST(value)
+    else this.right.insert(value)
+  }
+}
+
+BST.prototype.contains = function(value) {
+  if (this.value === value) return true
+  if (value < this.value) {
+    if (!this.left) return false
+    else return this.left.contains(value)
+  }
+  else if (value > this.value) {
+    if (!this.right) return false
+    else return this.right.contains(value)
   }
 }
