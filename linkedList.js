@@ -1,13 +1,13 @@
 // Linked List
 
 // LinkedList constructor
-let LinkedList = () => {
+function LinkedList(){
   this.head = null
   this.tail = null
 }
 
 // Node constructor
-let Node = (value, next, prev) => {
+function Node(value, next, prev){
   this.value = value
   this.next = next
   this.prev = prev
