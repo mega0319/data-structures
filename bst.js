@@ -29,3 +29,49 @@ BST.prototype.contains = function(value) {
     else return this.right.contains(value)
   }
 }
+
+// depthFirstTraversal in order, pre-order, post-order
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
+  if (this.order ==- 'pre-order') iteratorFunc(this.value)
+  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'in-order') iteratorFunc(this.value)
+  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'post-order') iteratorFunc(this.value)
+}
+
+
+BST.prototype.breadthFirstTraversal = function(iteratorFunc) {
+  // start the queue with the root node aka this
+  let queue = [this]
+  // while loop runs as long as queue is not empty
+  while (queue.length) {
+    // take node out of queue, and work on it with iteratorFunc
+    let treeNode = queue.shift()
+    iteratorFunc(treeNode)
+    // if the node has left or right child, push them into the queue, rinse, repeat
+    if (treeNode.left) queue.push(treeNode.left)
+    if (treeNode.right) queue.push(treeNode.right)
+  }
+}
+
+// traverse tree recursively and extract min val
+BST.prototype.getMinVal = function() {
+  if (!this.left) {
+    return this.value
+  }else{
+    return this.left.getMinVal()
+  }
+}
+
+// traverse tree recursively and extract max val
+BST.prototype.getMaxVal = function() {
+  if (!this.right) {
+    return this.value
+  }else{
+    return this.right.getMaxVal()
+  }
+}
+
+let log = (value) => {
+  console.log(value)
+}

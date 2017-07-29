@@ -14,7 +14,7 @@ function Node(value, next, prev){
 }
 
 // insertion is O(1) - constant
-LinkedList.prototype.addToHead = value => {
+LinkedList.prototype.addToHead = function(value) {
   let newNode = new Node(value, this.head, null)
   if (this.head) this.head.prev = newNode
   else this.tail = newNode
@@ -22,7 +22,7 @@ LinkedList.prototype.addToHead = value => {
 }
 
 // removal is O(1) - constant
-LinkedList.prototype.removeHead = () => {
+LinkedList.prototype.removeHead = function() {
   if (!this.head) return null
   let value = this.head.value
   this.head = this.head.next
@@ -32,7 +32,7 @@ LinkedList.prototype.removeHead = () => {
 }
 
 // insertion is O(1) - constant
-LinkedList.prototype.addToTail = value => {
+LinkedList.prototype.addToTail = function() {
   let newNode = new Node(value, null, this.tail)
   if (this.tail) this.tail.next = newNode
   else this.head = newNode
@@ -40,7 +40,7 @@ LinkedList.prototype.addToTail = value => {
 }
 
 // removal is O(1) - constant
-LinkedList.prototype.removeTail = () => {
+LinkedList.prototype.removeTail = function() {
   if (!this.tail) return null
   let value = this.tail.value
   this.tail = this.tail.prev
@@ -50,7 +50,7 @@ LinkedList.prototype.removeTail = () => {
 }
 
 // traversal and searching is O(n) - linear
-LinkedList.prototype.search = searchValue => {
+LinkedList.prototype.search = function(searchValue) {
   let currentNode = this.head
   while (currentNode) {
     if (currentNode.value === searchValue){
@@ -62,7 +62,7 @@ LinkedList.prototype.search = searchValue => {
 }
 
 // finds the indexes of all nodes that have the value passed in
-LinkedList.prototype.indexOf = value => {
+LinkedList.prototype.indexOf = function(value) {
   let currentNode = this.head
   let currentIndex = 0
   let indexes = []
