@@ -1,12 +1,13 @@
 // Binary Search Tree
 
-
+// binary search tree constructor
 function BST(value) {
   this.value = value
   this.right = null
   this.left = null
 }
 
+// insertion function
 BST.prototype.insert = function(value) {
   if (value <= this.value) {
     if (!this.left) this.left = new BST(value)
@@ -18,6 +19,7 @@ BST.prototype.insert = function(value) {
   }
 }
 
+// binary search function
 BST.prototype.contains = function(value) {
   if (this.value === value) return true
   if (value < this.value) {
@@ -30,7 +32,7 @@ BST.prototype.contains = function(value) {
   }
 }
 
-// depthFirstTraversal in order, pre-order, post-order
+// depth first traversal in order, pre-order, post-order
 BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
   if (this.order ==- 'pre-order') iteratorFunc(this.value)
   if (this.left) this.left.depthFirstTraversal(iteratorFunc, order)
@@ -40,6 +42,7 @@ BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
 }
 
 
+// breadth first traversal
 BST.prototype.breadthFirstTraversal = function(iteratorFunc) {
   // start the queue with the root node aka this
   let queue = [this]
@@ -75,3 +78,17 @@ BST.prototype.getMaxVal = function() {
 let log = (value) => {
   console.log(value)
 }
+
+let bst = new BST(50);
+
+bst.insert(30);
+bst.insert(70);
+bst.insert(100);
+bst.insert(60);
+bst.insert(59);
+bst.insert(20);
+bst.insert(45);
+bst.insert(35);
+bst.insert(85);
+bst.insert(105);
+bst.insert(10);
