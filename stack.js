@@ -29,7 +29,7 @@ Stack.prototype.pop = function() {
   }
 
   let item = this.top.data
-  top = this.top.next
+  this.top = this.top.next
 
   return item
 }
