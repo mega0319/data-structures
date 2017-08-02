@@ -61,6 +61,18 @@ LinkedList.prototype.search = function(searchValue) {
   return null
 }
 
+// searches through linked list for particular node and deletes it
+LinkedList.prototype.deleteWithin = function(searchValue) {
+  let currentNode = this.head
+  while (currentNode) {
+    if (currentNode.value === searchValue) {
+      currentNode.prev = currentNode.next
+      currentNode.next.prev = currentNode.prev
+    }
+    currentNode.next
+  }
+}
+
 // finds the indexes of all nodes that have the value passed in
 LinkedList.prototype.indexOf = function(value) {
   let currentNode = this.head

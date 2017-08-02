@@ -34,7 +34,7 @@ BST.prototype.contains = function(value) {
 
 // depth first traversal in order, pre-order, post-order
 BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
-  if (this.order ==- 'pre-order') iteratorFunc(this.value)
+  if (this.order === 'pre-order') iteratorFunc(this.value)
   if (this.left) this.left.depthFirstTraversal(iteratorFunc, order)
   if (order === 'in-order') iteratorFunc(this.value)
   if (this.right) this.right.depthFirstTraversal(iteratorFunc, order)
@@ -51,7 +51,7 @@ BST.prototype.breadthFirstTraversal = function(iteratorFunc) {
     // take node out of queue, and work on it with iteratorFunc
     let treeNode = queue.shift()
     iteratorFunc(treeNode)
-    // if the node has left or right child, push them into the queue, rinse, repeat
+    // if the node has left or right child, push them into the queue
     if (treeNode.left) queue.push(treeNode.left)
     if (treeNode.right) queue.push(treeNode.right)
   }

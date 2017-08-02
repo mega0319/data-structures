@@ -62,7 +62,6 @@ HashTable.prototype.get = function(key) {
 // iterates through all buckets, and checks for chains in each bucket - returns array of all hash nodes
 HashTable.prototype.retrieveAll = function() {
   let allNodes = []
-
   for (let i = 0; i < this.numBuckets; i++) {
     let currentNode = this.buckets[i]
     while (currentNode) {
