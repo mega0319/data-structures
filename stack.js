@@ -16,8 +16,8 @@ function StackNode(data) {
 
 // test subjects
 let newStack = new Stack()
-let newNode = newStackNode(10)
-let anotherNode = newStackNode(6)
+let newNode = new StackNode(10)
+let anotherNode = new StackNode(6)
 
 newStack.top = newNode
 newNode.next = anotherNode
