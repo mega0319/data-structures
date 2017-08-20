@@ -47,7 +47,7 @@ HashTable.prototype.insert = function(key, value) {
   }
 }
 
-// extract particular node by key name
+// search for particular node by key name
 HashTable.prototype.get = function(key) {
   let index = this.hash(key)
   if (!this.buckets[index]) return null

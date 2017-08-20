@@ -75,6 +75,22 @@ BST.prototype.getMaxVal = function() {
   }
 }
 
+// invert binary tree
+let invertBinTree = tree => {
+    if (tree === null){
+      return null
+    }
+
+    leftInvert = invertBinTree(tree.left)
+    rightInvert = invertBinTree(tree.right)
+
+    let temp = tree.left
+    tree.left = tree.right
+    tree.right = temp
+
+    return tree
+}
+
 let log = (value) => {
   console.log(value)
 }
