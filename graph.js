@@ -36,3 +36,38 @@ Graph.prototype.allEdges = function() {
 
   return allEdges
 }
+
+Graph.prototype.checkConnection = function(startVertex, targetVertex) {
+
+  let startVertexNode = this.findVertex(startVertex)
+  if (!startVertex) {
+    return "Start vertex does not exist!"
+  }
+
+  let visited = {}
+  let queue = [startVertexNode]
+
+  while (queue.length) {
+    let currentVertex = queue.shift()
+
+    if (currentVertex.name === targetVertex) {
+      return true
+    }
+    visited[currentVertex.name] = true
+
+    for (let i = 0; i < currentVertex.edges.length; i++) {
+      if (!visited[currentVertex.edges[i]])
+        queue.push(this.findVertex(currentVertex.edges[i]))
+    }
+  }
+  return false
+}
+
+Graph.prototype.findVertex = function(vertexName) {
+  for (let i = 0; i < this.vertices.length; i++) {
+    if (vertexName === this.vertices[i].name) {
+      return this.vertices[i]
+    }
+  }
+  return null
+}
