@@ -11,6 +11,10 @@ function Vertex(name){
   this.edges = []
 }
 
+Vertex.prototype.addEdge = function(vertexName) {
+  this.edges.push(vertexName)
+}
+
 Graph.prototype.add = function(vertexName, edges=[]) {
   let newVertex = new Vertex(vertexName)
   edges.forEach( edgeName => newVertex.edges.push(edgeName))
@@ -37,6 +41,21 @@ Graph.prototype.allEdges = function() {
   return allEdges
 }
 
+Graph.prototype.checkAdjacency = function(firstVertex, secondVertex) {
+  let first = this.findVertex(firstVertex)
+
+  return first.edges.includes(secondVertex)
+}
+
+Graph.prototype.findVertex = function(vertexName) {
+  for (let i = 0; i < this.vertices.length; i++) {
+    if (vertexName === this.vertices[i].name) {
+      return this.vertices[i]
+    }
+  }
+  return null
+}
+
 Graph.prototype.checkConnection = function(startVertex, targetVertex) {
 
   let startVertexNode = this.findVertex(startVertex)
@@ -57,17 +76,13 @@ Graph.prototype.checkConnection = function(startVertex, targetVertex) {
 
     for (let i = 0; i < currentVertex.edges.length; i++) {
       if (!visited[currentVertex.edges[i]])
-        queue.push(this.findVertex(currentVertex.edges[i]))
+      queue.push(this.findVertex(currentVertex.edges[i]))
     }
   }
   return false
 }
 
-Graph.prototype.findVertex = function(vertexName) {
-  for (let i = 0; i < this.vertices.length; i++) {
-    if (vertexName === this.vertices[i].name) {
-      return this.vertices[i]
-    }
-  }
-  return null
+Graph.prototype.BFS - function(callback) {
+  let visited = {}
+  let queue = []
 }
