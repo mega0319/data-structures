@@ -2,19 +2,23 @@
 
 // undirected graph
 
+// graph constructor keeps track of all of its vertices
 function Graph() {
   this.vertices = []
 }
 
+// vertex constructor keeps track of its name and all edges connecting to another vertex
 function Vertex(name){
   this.name = name
   this.edges = []
 }
 
+// add vertex to vertex's edges
 Vertex.prototype.addEdge = function(vertexName) {
   this.edges.push(vertexName)
 }
 
+// add
 Graph.prototype.add = function(vertexName, edges=[]) {
   let newVertex = new Vertex(vertexName)
   edges.forEach( edgeName => newVertex.edges.push(edgeName))
@@ -75,8 +79,9 @@ Graph.prototype.checkConnection = function(startVertex, targetVertex) {
     visited[currentVertex.name] = true
 
     for (let i = 0; i < currentVertex.edges.length; i++) {
-      if (!visited[currentVertex.edges[i]])
-      queue.push(this.findVertex(currentVertex.edges[i]))
+      if (!visited[currentVertex.edges[i]]) {
+        queue.push(this.findVertex(currentVertex.edges[i]))
+      }
     }
   }
   return false
