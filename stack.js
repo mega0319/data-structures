@@ -62,9 +62,9 @@ Stack.prototype.search = function(searchValue) {
   let currentNode = this.top
 
   while (currentNode) {
-    if (this.top.data === searchValue){
+    if (currentNode.data === searchValue){
       return currentNode
     }
-    currentNode = this.top.next
+    currentNode = currentNode.next
   }
 }
